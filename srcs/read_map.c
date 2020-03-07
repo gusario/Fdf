@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: srobert- <srobert-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 04:03:33 by srobert-          #+#    #+#             */
-/*   Updated: 2019/04/30 04:08:40 by srobert-         ###   ########.fr       */
+/*   Updated: 2019/06/01 13:33:59 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static t_coord_values	*new_coord(char *s)
 	char			**parts;
 
 	if (!(coord = (t_coord_values*)ft_memalloc(sizeof(t_coord_values))))
-		next_u_say(GOVNO_MAP_READING);
+		next_u_say(MAP_READING);
 	if (!(parts = ft_strsplit(s, ',')))
-		next_u_say(GOVNO_MAP_READING);
+		next_u_say(MAP_READING);
 	if (!ft_isnumber(parts[0], 10))
-		next_u_say(GOVNO_MAP_READING);
+		next_u_say(MAP_READING);
 	if (parts[1] && !ft_isnumber(parts[1], 16))
-		next_u_say(GOVNO_MAP_READING);
+		next_u_say(MAP_READING);
 	coord->z = ft_atoi(parts[0]);
 	coord->color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
 	coord->next = NULL;
@@ -57,7 +57,7 @@ static void				parse_line(char **coords_line,
 	if (map->width == 0)
 		map->width = width;
 	else if (map->width != width)
-		next_u_say(GOVNO_MAP);
+		next_u_say(MAP);
 }
 
 static void				translate(t_coord_values **coord_values, t_map *map)
@@ -69,9 +69,9 @@ static void				translate(t_coord_values **coord_values, t_map *map)
 	arr_size = map->width * map->height * sizeof(int);
 	i = map->width * map->height - 1;
 	if (!(map->coord_arr = (int *)ft_memalloc(arr_size)))
-		next_u_say(GOVNO_CONV_TO_ARR);
+		next_u_say(CONV_TO_ARR);
 	if (!(map->coord_collor = (int *)ft_memalloc(arr_size)))
-		next_u_say(GOVNO_CONV_TO_ARR);
+		next_u_say(CONV_TO_ARR);
 	while ((coord = pop(coord_values)) && i >= 0)
 	{
 		map->coord_arr[i] = coord->z;
@@ -96,14 +96,14 @@ int						read_map(int fd, t_coord_values **coord_values,
 	while ((result = get_next_line(fd, &line)) == 1)
 	{
 		if (!(coords_line = ft_strsplit(line, ' ')))
-			next_u_say(GOVNO_MAP_READING);
+			next_u_say(MAP_READING);
 		parse_line(coords_line, coord_values, map);
 		feel_free(coords_line);
 		ft_strdel(&line);
 		map->height++;
 	}
 	if (!(*coord_values))
-		next_u_say(GOVNO_MAP);
+		next_u_say(MAP);
 	translate(coord_values, map);
 	return (result);
 }

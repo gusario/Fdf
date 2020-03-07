@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: srobert- <srobert-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 03:46:08 by srobert-          #+#    #+#             */
-/*   Updated: 2019/04/30 08:20:23 by srobert-         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:21:29 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	draw_line(t_fdf *fdf, t_point a, t_point b)
 	while (cur.x != b.x || cur.y != b.y)
 	{
 		put_pixel(fdf, cur.x, cur.y, get_grad_color(cur, a, b, delta));
+	
 		if ((arr[1] = arr[0] * 2) > -delta.y)
 		{
 			arr[0] -= delta.y;
@@ -56,6 +57,7 @@ static void	draw_line(t_fdf *fdf, t_point a, t_point b)
 		}
 	}
 }
+
 
 static void	menu_draw(t_fdf *fdf)
 {
@@ -105,6 +107,6 @@ void		draw(t_map *map, t_fdf *fdf)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
+	 mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 	menu_draw(fdf);
 }

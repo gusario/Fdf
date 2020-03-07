@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: srobert- <srobert-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 04:15:12 by srobert-          #+#    #+#             */
-/*   Updated: 2019/04/30 04:22:41 by srobert-         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:19:53 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-# define GOVNO_USAGE			"Usage: ./fdf MAP_FILE"
-# define GOVNO_MAP			"Tvoy MAP_FILE govno"
-# define GOVNO_MAP_READING	"Soryan chot ne smog prochest'"
-# define GOVNO_MAP_INIT		"Chot ne tak s MAP_INIT"
-# define GOVNO_FDF_INIT		"Chot ne tak s FDF_INIT"
-# define GOVNO_CONV_TO_ARR	"Blya massiv ne sdelalsya"
-# define GOVNO_CAMERA_INIT	"Ne camera A Govno"
+# define USAGE			"Usage: ./fdf MAP_FILE"
+# define MAP			"Tvoy MAP_FILE govno"
+# define MAP_READING	"Soryan chot ne smog prochest'"
+# define MAP_INIT		"Chot ne tak s MAP_INIT"
+# define FDF_INIT		"Chot ne tak s FDF_INIT"
+# define CONV_TO_ARR	"Blya massiv ne sdelalsya"
+# define CAMERA_INIT	"Ne camera A Govno"
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 # define MENU_WIDTH 50
 # define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
 # define FT_MIN(A, B) (((A) < (B)) ? (A) : (B))
